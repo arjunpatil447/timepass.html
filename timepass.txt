@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    input {
+      padding: 0.5rem;
+      margin-top: 1rem;
+      width: 80%;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .choice-btn {
+      margin: 0.5rem;
+      background-color: #28a745;
+    }
+    .choice-btn.no {
+      background-color: #dc3545;
+    }
+    #message {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #333;
+    }
+    #response {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome!</h2>
+    <p>Please enter your name:</p>
+    <input type="text" id="nameInput" placeholder="Your name..." />
+    <br />
+    <button onclick="displayMessage()">Submit</button>
+    <div id="message"></div>
+    <div id="momoButtons" style="display: none;">
+      <button class="choice-btn" onclick="answerMomo(true)">Yes</button>
+      <button class="choice-btn no" onclick="answerMomo(false)">No</button>
+    </div>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    function displayMessage() {
+      const name = document.getElementById("nameInput").value.trim();
+      const messageBox = document.getElementById("message");
+      const momoButtons = document.getElementById("momoButtons");
+      const responseBox = document.getElementById("response");
+
+      responseBox.innerHTML = ""; // clear previous response
+
+      if (name === "") {
+        messageBox.innerHTML = "Please enter your name!";
+        momoButtons.style.display = "none";
+      } else {
+        messageBox.innerHTML = `Hello, <strong>${name}</strong>! 👋<br>Momos khayegi ?? 🚀`;
+        momoButtons.style.display = "block";
+      }
+    }
+
+    function answerMomo(wantsMomo) {
+      const responseBox = document.getElementById("response");
+      if (wantsMomo) {
+        responseBox.innerHTML = "Yay! Let's go eat momos! 🥟😋";
+      } else {
+        responseBox.innerHTML = "No worries! More for me 😄";
+      }
+    }
+  </script>
+</body>
+</html>
